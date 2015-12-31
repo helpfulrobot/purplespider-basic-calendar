@@ -20,7 +20,9 @@ class CalendarPage extends Page
     {
         $fields = parent::getCMSFields();
 
-        if ($this->EventTabFirst) $fields->insertBefore(new Tab('Events'), 'Main');
+        if ($this->EventTabFirst) {
+            $fields->insertBefore(new Tab('Events'), 'Main');
+        }
 
         $config = GridFieldConfig_RecordEditor::create();
         $gridField = new GridField("Events", "Upcoming Events", $this->Events()->where("Date >= CURRENT_DATE OR Date IS NULL"), $config);
